@@ -2,21 +2,21 @@
 
 /* Controllers */
 
-var phonecatControllers = angular.module('phonecatControllers', []);
+var phonecatApp = angular.module('phonecatApp', []);
 
-phonecatControllers.controller('PhoneListCtrl', ['$scope', 'Phone',
-  function($scope, Phone) {
-    $scope.phones = Phone.query();
-    $scope.orderProp = 'age';
-  }]);
+phonecatApp.controller('PhoneListCtrl', function ($scope) {
+  $scope.phones = [
+    {'name': 'Nexus S',
+     'snippet': 'Fast just got faster with Nexus S.'},
+    {'name': 'Motorola XOOM™ with Wi-Fi',
+     'snippet': 'The Next, Next Generation tablet.'},
+    {'name': 'MOTOROLA XOOM™',
+     'snippet': 'The Next, Next Generation tablet.'}
+  ];
 
-phonecatControllers.controller('PhoneDetailCtrl', ['$scope', '$routeParams', 'Phone',
-  function($scope, $routeParams, Phone) {
-    $scope.phone = Phone.get({phoneId: $routeParams.phoneId}, function(phone) {
-      $scope.mainImageUrl = phone.images[0];
-    });
+  $scope.name = "Hello World!!"; // A property of this controller
+});
 
-    $scope.setImage = function(imageUrl) {
-      $scope.mainImageUrl = imageUrl;
-    };
-  }]);
+// phonecatApp.controller('nameOfController', function($scope){ //The argument that gets passed should always be named $SCOPE
+//   $scope.myName = "Kamlesh Shrestha";
+// });// This defines controller
